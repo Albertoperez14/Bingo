@@ -2,8 +2,8 @@ import java.util.Random;
 
 public class Carton {
     private int [][] carton= {{ 4,  0, 21,  0, 45,  0, 63, 74,  0 },
-                                { 8,  0,  0, 32,  0, 58, 0,  79, 83 },
-                                { 0,  14, 26,  0, 49, 0,  67, 0, 90 }};
+            { 8,  0,  0, 32,  0, 58, 0,  79, 83 },
+            { 0,  14, 26,  0, 49, 0,  67, 0, 90 }};
 
     private boolean[][] comprobacion;
 
@@ -17,7 +17,7 @@ public class Carton {
             }
 
 
-    }
+        }
     }
 
 
@@ -78,15 +78,15 @@ public class Carton {
     public boolean comprobarLinea() {
         boolean aux = true;
         boolean linea=false;
-            for(int row = 0; row<comprobacion.length && linea==false; row++){
-                aux=true;
-                for(int col=0; col<comprobacion[row].length && aux==true;col++){
-                    if(comprobacion[row][col]==false){
-                        aux=false;
-                    }
+        for(int row = 0; row<comprobacion.length && linea==false; row++){
+            aux=true;
+            for(int col=0; col<comprobacion[row].length && aux==true;col++){
+                if(comprobacion[row][col]==false){
+                    aux=false;
                 }
-                linea=aux;
             }
+            linea=aux;
+        }
         return linea;
     }
 
@@ -123,5 +123,25 @@ public class Carton {
             }
         }
         return marcado;
+    }
+
+    public boolean comprobarLineaNumero() {
+        boolean aux = true;
+        boolean linea=false;
+        int contador = 0;
+        for(int row = 0; row<comprobacion.length && linea==false; row++){
+            aux=true;
+            contador=0;
+
+            for(int col=0; col<comprobacion[row].length && aux==true;col++) {
+                if(comprobacion[row][col]==true){
+                    contador++;
+                }
+                if (contador == 9) {
+                    linea = true;
+                }
+            }
+        }
+        return linea;
     }
 }
